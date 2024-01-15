@@ -1,0 +1,12 @@
+import sys
+input = sys.stdin.readline
+
+a = list(map(int,input().split()))
+a = sorted(a, reverse=True)
+
+idx=0
+rst=0
+while (idx<len(a)):
+    idx+=a[idx]
+    rst+=1
+print(rst)
