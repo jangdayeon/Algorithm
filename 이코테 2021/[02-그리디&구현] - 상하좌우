@@ -1,0 +1,24 @@
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+where = [0,0]
+
+def whereChk(a,b):
+    if(where[0]+a<n and where[1]+b<n and where[0]+a>=0 and where[1]+b>=0 ):
+        return [where[0]+a, where[1]+b]
+    else:
+        return [where[0], where[1]]
+
+drt = input().split()
+for i in drt:
+    if(i=='R'):
+        where = whereChk(0,1)
+    if(i=='U'):
+        where = whereChk(-1,0)
+    if(i=='D'):
+        where = whereChk(1,0)
+    if(i=='L'):
+        where = whereChk(0,-1)
+    
+print(where[0]+1, where[1]+1)
