@@ -1,6 +1,7 @@
 import sys
 input = sys.stdin.readline
 
+n = int().split()
 a = list(map(int,input().split()))
 a = sorted(a, reverse=True)
 

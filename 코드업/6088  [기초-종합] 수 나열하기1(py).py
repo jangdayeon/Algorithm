@@ -18,13 +18,19 @@
 # 시작 값(a), 등차(d), 몇 번째인지를 나타내는 정수(n)가 입력될 때
 # n번째 수를 출력하는 프로그램을 만들어보자.
 
-a,b,n = input().split(" ")
-a = int(a)
-b = int(b)
-n = int(n)
-cnt = 0
-for i in range(a,9999,b):
-    cnt+=1
-    if(cnt == n):
-        print(i)
-        break
+a,d,n = map(int, input().split())
+print(a+d*(n-1))
+
+# 아래와 같이 풀었는데 문제는 0 0 100이 입력됐을 때 range()의 마지막은 0이 입력되면 안되어 오류 발생함
+# a,b,n = input().split(" ")
+# a = int(a)
+# b = int(b)
+# n = int(n)
+# cnt = 0
+# rst = 0
+# for i in range(a,500,b):
+#     cnt+=1
+#     if(cnt == n):
+#         rst = i
+#         break
+# print(rst)

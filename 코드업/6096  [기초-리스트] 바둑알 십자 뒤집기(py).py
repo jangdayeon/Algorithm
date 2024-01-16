@@ -37,8 +37,7 @@
 pan = [0 for _ in range(0,19)]
 
 for i in range(0,19):
-    pan[i] = map(int, input().split())
-    pan[i] = list(pan[i])
+    pan[i] = list(map(int, input().split()))
     
 n = int(input())
 for i in range(0,n):
@@ -55,3 +54,6 @@ for i in range(0,19):
     for j in range(0,19):
         print(pan[i][j], end=' ')
     print()
+
+#tuple to list는 그냥 list(tuple) 넣으면 된다!!
+#그리고 for문에 인덱스 안쓰면 _로 남겨놔도 된다.

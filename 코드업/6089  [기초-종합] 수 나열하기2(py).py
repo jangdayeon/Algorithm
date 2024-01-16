@@ -18,4 +18,4 @@
 # n번째 수를 출력하는 프로그램을 만들어보자.
 
 a,d,n = map(int, input().split(" "))
-print(a*d*(n-1))
+print(a*(d**(n-1)))

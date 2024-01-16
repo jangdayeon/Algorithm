@@ -40,10 +40,12 @@
 stu = [0 for i in range(1,24)]
 
 n = int(input())
-call = map(int, input().split(" "))
+call = map(int, input().split())
 
 for i in call:
     stu[i-1]+=1
 
 for i in stu:
     print(i, end=" ")
+
+#split는 기본이 띄어쓰기와 엔터로 구분지어 주기 때문에 굳이 " "을 안 붙여도 된다. 오히려 붙이면 안될 때가 많은듯,,
