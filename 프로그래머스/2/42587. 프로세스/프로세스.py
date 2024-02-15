@@ -1,3 +1,7 @@
+#힙을 이용함
+#location 값을 따로 정해놔서 이동할때마다 업데이트해주기
+#만약 위의 값이 0이라 pop해야 되는 상황이 오면 해당 순서와 for문을 종료하기
+
 from collections import deque
 
 def solution(priorities, location):
