@@ -17,7 +17,7 @@ def solution(numbers):
         for j in a:
             b = int("".join(j))
             beforeSet.append(b)
-    answer0 = list(map(int, beforeSet))
+    answer0 = list(map(int, set(beforeSet)))
     print(*answer0)
     #여기부터 소수 판별
     if(len(answer0)==0 or sum(answer0)==0):
