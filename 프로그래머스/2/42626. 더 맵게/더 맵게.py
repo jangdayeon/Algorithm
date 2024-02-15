@@ -1,3 +1,5 @@
+#heapq를 이용하여 k를 넘을 때까지 2개씩 팝해서 스코빌 지수를 계산해서 push하기
+
 import heapq
 
 
