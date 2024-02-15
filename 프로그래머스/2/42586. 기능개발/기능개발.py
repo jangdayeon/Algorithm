@@ -1,3 +1,6 @@
+#progresses 각각 며칠 걸리는지 계산
+#인덱스 전의 값이 더 크면 append 1하지말고 해당 인덱스에 1 추가하기
+
 import math
 def solution(progresses, speeds):
     answer = []
