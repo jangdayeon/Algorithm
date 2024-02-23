@@ -1,5 +1,5 @@
 -- 코드를 입력하세요
-
+#NOT IN을 사용해야 한다. 처음에 INNER JOIN을 통해 풀었지만, 기간 설정에서 잘못된 것이었음
 SELECT CP.CAR_ID, CP.CAR_TYPE, CP.FEE
 FROM
 (
