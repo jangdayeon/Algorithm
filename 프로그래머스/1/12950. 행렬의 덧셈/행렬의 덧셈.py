@@ -1,5 +1,3 @@
-def solution(arr1, arr2):
-    answer = []
-    for a1, a2 in zip(arr1,arr2):
-        answer.append(list(map(lambda x,y:x+y, a1,a2)))
+def solution(A, B):
+    answer = [[c + d for c, d in zip(a,b)] for a, b in zip(A,B)]
     return answer
