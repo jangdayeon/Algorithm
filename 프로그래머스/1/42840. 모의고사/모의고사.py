@@ -1,23 +1,18 @@
 def solution(answers):
-    a = [1,2,3,4,5] *(len(answers)//5+1)
-    b = [2,1,2,3,2,4,2,5] *(len(answers)//8+1)
-    c = [3,3,1,1,2,2,4,4,5,5] *(len(answers)//10+1)
-    correct = {}
-    correct[1] = 0
-    correct[2] = 0
-    correct[3] = 0
-    for i in range(len(answers)):
-        if(a[i]==answers[i]):
+    p0 = [1,2,3,4,5]
+    p1 = [2,1,2,3,2,4,2,5]
+    p2 = [3,3,1,1,2,2,4,4,5,5]
+    correct = [0,0,0] #차례대로 p0,p1,p2
+    for i,a in enumerate(answers): #정답 유무 확인
+        if a == p0[i%5]:
+            correct[0]+=1
+        if a == p1[i%8]:
             correct[1]+=1
-        if(b[i]==answers[i]):
+        if a == p2[i%10]:
             correct[2]+=1
-        if(c[i]==answers[i]):
-            correct[3]+=1
-    answer = []
-    a = sorted(correct.items(), key=lambda x:x[1], reverse=True) #이거 꼭 기억하기
-    b = list(a[0])
-    m = b[1]
-    for i,j in a:
-        if j == m:
-            answer.append(i)
+    
+    answer = [] #가장 많이 맞춘 사람을 담을 리스트
+    for i,c in enumerate(correct): #가장 많이 맞춘 사람 answer 리스트에 추가
+        if c == max(correct):
+            answer.append(i+1)
     return answer
