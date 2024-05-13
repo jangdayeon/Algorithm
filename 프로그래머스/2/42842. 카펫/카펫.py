@@ -1,20 +1,11 @@
-#첫번째 아이디어
-#brown+yellow 하고, 이 수가 어떤 수로 나눠지는지 (3이상에 brown과 yellow 수 미포함) 구하고
-# brown = brown - (큰 수 *2) 하고, ( brown /2 ) + 2 == 작은 수이면 true로 리턴하기
-
+# 1. brown + yellow 한 값의 약수 짝을 구하고,
+# 2. 공약수를 a와 b라고 했을 때 (a+b) * 2 - 4 == brown인지 확인하고 만약 맞다면 그대로 리턴하기
 def solution(brown, yellow):
     by = brown + yellow
-    suu = []
-    for i in range(3,by):
-        #[작은 값, 큰 값]이 들어오기 시작하면 break
-        if(by//i < i):
-            break
-        if(by % i ==0): #나머지가 0이면
-            suu.append([by//i, i]) #값 추가하기([큰 값, 작은 값])
-    # print(*suu) 
-    
-    for big, small in suu:
-        a = brown - (big*2)
-        if(a/2 +2 == small):
-            return [big,small]
-    return None
+    checkList = []
+    for i in range(1,int(by**(1/2))+1):
+        if by % i == 0 :
+            checkList.append((i,by//i))
+    for a,b in checkList:
+        if (a+b)*2-4 == brown :
+            return [b,a]
