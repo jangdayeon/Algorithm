@@ -1,6 +1,6 @@
 # [level 1] 햄버거 만들기 - 133502 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/133502#) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/133502) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 05월 15일 11:59:54
+2024년 05월 15일 16:17:02
 
 ### 문제 설명
 

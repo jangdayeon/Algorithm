@@ -13,7 +13,8 @@ def solution(ingredient):
             # stack = stack[:-4] #이것의 시간 복잡도는 stack[a:b]일 경우 O(b-a)임
             # 그에 반해 pop()은 O(1)의 시간복잡도를 가짐
             # 참고로 del이나 remove의 경우 O(N)의 시간복잡도
-            for _ in range(4):
-                stack.pop()
+            # for _ in range(4):
+            #     stack.pop()
+            del stack[-4:]
             result += 1
     return result
