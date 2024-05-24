@@ -1,14 +1,10 @@
-from bisect import bisect_left,bisect_right
 def solution(citations):
-    citations.sort()
-    answer = -1
-    if(max(citations)==0):
-        return 0
-    for i in range(max(citations)):
-        if(i>len(citations)):
-            break
-        where = bisect_left(citations,i)
-        print(where)
-        if(i <= len(citations[where::]) and i >= len(citations[:where:])):
-            answer = i
-    return answer
+    for i in range(max(citations),-1,-1):
+        up_down = [0,0]
+        for c in citations:
+            if c >= i :
+                up_down[0] += 1
+            else:
+                up_down[1] += 1
+        if up_down[0] >= i and up_down[1] <= i :
+            return i
