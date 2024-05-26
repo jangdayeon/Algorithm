@@ -1,29 +1,19 @@
-#progresses 각각 며칠 걸리는지 계산
-#인덱스 전의 값이 더 크면 append 1하지말고 해당 인덱스에 1 추가하기
-
-import math
+#우선 며칠이 걸리는지 구해서 리스트에 저장
+#이전보다 일자가 짧으면 이전값에 +1, 길면 비교 값 업데이트
 def solution(progresses, speeds):
-    answer = []
-    m = 0
-    for i in range(len(progresses)):
-        x = math.ceil(( 100 - progresses[i] ) / speeds[i])
-        if(len(answer)==0):
-            answer.append(x)
-        elif(answer[len(answer)-1]<x):
-            answer.append(x)
-        else:
-            answer.append(answer[len(answer)-1])
-    realAns = []
-    cnt = 0
-    chk = answer[0]
-    for i in range(len(answer)):
-        print(answer[i])
-        if(answer[i]!=chk):
-            realAns.append(cnt)
-            cnt = 1
-            chk = answer[i]
-        else:
-            cnt +=1
-        if(i == len(answer)-1):
-                realAns.append(cnt)
-    return realAns
+    for i,s in enumerate(speeds):
+        pro = 100-progresses[i]
+        if pro % s == 0 :
+            progresses[i] = pro // s
+        else :
+            progresses[i] = pro // s + 1
+    
+    result = dict()
+    maxi = 0
+    for p in progresses:
+        if not result or maxi < p :
+            result[p] = 1
+            maxi = p
+        else :
+            result[maxi] += 1
+    return list(result.values())
