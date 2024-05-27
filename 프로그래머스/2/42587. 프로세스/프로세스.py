@@ -1,26 +1,20 @@
-#힙을 이용함
-#location 값을 따로 정해놔서 이동할때마다 업데이트해주기
-#만약 위의 값이 0이라 pop해야 되는 상황이 오면 해당 순서와 for문을 종료하기
-
-from collections import deque
+from collections import deque 
 
 def solution(priorities, location):
-    where = location
-    rtn = 1
-    queue = deque(priorities)
-    while len(queue)>1:
-        a = queue.popleft()
-        if(a >= max(queue)): #첫 번째 노드가 가장 큰 수였을 경우
-            if(where ==0): #알고 싶었던 노드였을 경우
-                return rtn
-            else: #아닌 경우
-                where -= 1
-            rtn +=1
-        else: #가장 큰 수가 아니였을 경우
-            queue.append(a)
-            if(where == 0):
-                where = len(queue)-1
-            else:
-                where -=1
-    return rtn
-            
+    queue = deque(list(zip([i for i in range(0,len(priorities)+1)], priorities)))
+    
+    result = []
+    while queue: #로직 시작
+        popOne = queue.popleft()
+        if not queue: #마지막 원소일 경우 예외 처리
+            result.append(popOne)
+            break
+        others = max(map(lambda x:x[1], queue)) #우선순위가 더 높은 원소가 있는지 확인
+        if popOne[1] >= others :
+            result.append(popOne)
+        else:
+            queue.append(popOne)
+    
+    for i,r in enumerate(result): #언제 실행된 프로세스인지 확인
+        if r[0] == location :
+            return i+1
