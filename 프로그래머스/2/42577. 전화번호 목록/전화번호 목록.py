@@ -1,11 +1,9 @@
-#string 정렬은 앞의 글자가 작은 수부터 정렬되므로 이 점을 이용해야 함
-#String 정렬과 Int 정렬의 차이점을 꼭 기억할 것
-
+#phone_book의 길이가 백만이므로 1중 for문만으로 코드를 짜야 함
+#string으로 정렬하면 앞글자가 같은 것부터 정렬되니깐 그 점을 이용해 나랑 나의 뒷값을 비교했다.
 def solution(phone_book):
-    phone_book = sorted(phone_book)
-    for i in range(1,len(phone_book)):
-        if( phone_book[i][0:len(phone_book[i-1]):] == phone_book[i-1]) :
+    phone_book.sort()
+
+    for i in range(len(phone_book)-1):
+        if phone_book[i] == phone_book[i+1][:len(phone_book[i])]:
             return False
-        if( i == len(phone_book)-1):
-            return True
-    return None
+    return True
