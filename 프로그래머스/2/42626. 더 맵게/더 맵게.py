@@ -1,25 +1,15 @@
-#heapq를 이용하여 k를 넘을 때까지 2개씩 팝해서 스코빌 지수를 계산해서 push하기
-
+#우선순위 힙으로 구현
+#한 번 틀림. 모든 음식의 스코빌 지수를 K 이상으로 만들 수 없는 경우를 고려하지 않아서
 import heapq
-
-
-def checkK(h, K):
-    for i in h:
-        if(i<K):
-            return False
-    return True
-
 def solution(scoville, K):
-    h = []
-    answer = 0
-    for i in scoville:
-        heapq.heappush(h, i)
-    # print(*h)
-    while (not checkK(h, K)):
-        if(len(h)<=1):
+    heapq.heapify(scoville) #힙으로 변환
+    result = 0
+    while scoville[0]<K:
+        if len(scoville) < 2 :
             return -1
-        first = heapq.heappop(h)
-        second = heapq.heappop(h)
-        heapq.heappush(h, (first+second*2))
-        answer +=1
-    return answer
+        a = heapq.heappop(scoville)
+        b = heapq.heappop(scoville)
+        heapq.heappush(scoville, a+(b*2))
+        result +=1
+    return result
+    
