@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+# UTF-8 encoding when using korean
+user_input = int(input())
+result = 0
+for u in range(user_input):
+	a, cal ,b = input().split()
+	if cal == "+":
+		result += (int(a) + int(b))
+	elif cal == "-":
+		result += (int(a) - int(b))
+	elif cal == "*":
+		result += (int(a) * int(b))
+	else:
+		result += (int(a) // int(b))
+print(result)
