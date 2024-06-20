@@ -1,7 +1,10 @@
 def solution(s):
-    s = s.lower().split(' ')
-    print(s)
-    for i in range(len(s)):
-        if s[i] != '':
-            s[i] = s[i][0].upper()+s[i][1:]
-    return ' '.join(s)
+    answer = ""
+    for ss in s.split(" "):
+        if ss == "" :
+            answer += " "
+        else :
+            tmp = ss.lower()
+            tmp = tmp[0].upper() + tmp[1:]
+            answer += tmp + " "
+    return answer[:-1]
