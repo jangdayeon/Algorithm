@@ -1,14 +1,19 @@
-#첫번째 아이디어 : 수확한 귤의 크기별 개수를 t_count에 저장 후 오름차순 정렬을 하여 개수가 적은 것부터 상자에서 빼주다가, 만약 귤의 개수가 k개 미만이 되면 그만 빼주고 리턴하도록 함
-#틀려서 정답 확인. 빼주지말고 반대로 for문을 구해 더해주는 방식으로! 구해보기
-from collections import Counter
+#counter이용하면 될 것 같다.
 def solution(k, tangerine):
-    t_count = Counter(tangerine)
-    total = 0
-    kinds = 0
-    t_count_keys = sorted(t_count, key = lambda x:t_count[x])
-    for t in t_count_keys[::-1]:
-        total += t_count[t]
-        kinds += 1
-        if total >= k :
-            return kinds
-    return -1
+    tangerine_cnt = dict()
+    for t in tangerine: #counter
+        if t in tangerine_cnt :
+            tangerine_cnt[t] += 1
+        else :
+            tangerine_cnt[t] = 1
+    tangerine_cnt_sorted = sorted(tangerine_cnt,key=lambda x:tangerine_cnt[x]) #귤크기별 개수 정렬
+    idx = 0
+    k = len(tangerine)-k #빼야하는 귤 개수
+    while k: 
+        if tangerine_cnt[tangerine_cnt_sorted[idx]] > 0 : #귤 개수가 0보다 많을 때
+            tangerine_cnt[tangerine_cnt_sorted[idx]] -= 1
+            k-=1
+        if tangerine_cnt[tangerine_cnt_sorted[idx]] == 0: #귤 개수가 0이면 다음 크기의 귤로 이동
+            tangerine_cnt.pop(tangerine_cnt_sorted[idx])
+            idx+=1
+    return len(tangerine_cnt)
