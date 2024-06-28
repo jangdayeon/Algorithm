@@ -7,12 +7,9 @@ def solution(want, number, discount):
     for i in range(want_cnt-1,len(discount)):
         cntr = Counter(discount[i-want_cnt+1:i+1])
         cntr.subtract(want_cntr)
-        canBuy = True
         for _cntr in cntr:
             if cntr[_cntr] < 0 :
-                canBuy = False
                 break
-        if canBuy:
+        else:
             result +=1
     return result
-                
