@@ -1,12 +1,13 @@
 def solution(s):
-    s = s[1:-1].split('},{')
-    s[0] = s[0][1:]
-    s[-1] = s[-1][:-1]
-    s.sort(key = lambda x:len(x)) #튜플 차례대로 정렬
-    
     result = []
-    for ss in s : #1000000 최악
-        temp = map(int, ss.split(',')) 
-        a = set(result) ^ set(temp) 
-        result.append(list(a)[0]) 
+    s = s.rstrip('}').lstrip('{').split("},{")
+    for i in range(len(s)):
+        s[i] = set(map(int, s[i].split(',')))
+    s.sort(key = lambda x:len(x))
+    se = set()
+    for ss in s:
+        a = ss-se
+        aa = a.pop()
+        result.append(aa)
+        se.add(aa)
     return result
