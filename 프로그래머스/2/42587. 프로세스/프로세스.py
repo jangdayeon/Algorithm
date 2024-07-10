@@ -1,20 +1,20 @@
-from collections import deque 
-
+from collections import deque
 def solution(priorities, location):
-    queue = deque(list(zip([i for i in range(0,len(priorities)+1)], priorities)))
-    
-    result = []
-    while queue: #로직 시작
-        popOne = queue.popleft()
-        if not queue: #마지막 원소일 경우 예외 처리
-            result.append(popOne)
-            break
-        others = max(map(lambda x:x[1], queue)) #우선순위가 더 높은 원소가 있는지 확인
-        if popOne[1] >= others :
-            result.append(popOne)
-        else:
-            queue.append(popOne)
-    
-    for i,r in enumerate(result): #언제 실행된 프로세스인지 확인
-        if r[0] == location :
-            return i+1
+    for i in range(len(priorities)):
+        priorities[i] = (priorities[i],i) #(우선순위, 위치)
+    q = deque(priorities)
+    result = 0
+    while q:
+        now_p, now_w = q.popleft()
+        print(now_p,now_w)
+        for i, (priority, _) in enumerate(q): 
+            if priority > now_p : #큐에 우선순위가 더 높은 프로세스가 있다면
+                q.append((now_p,now_w))
+                break
+            if i == len(q)-1: #큐에 우선순위가 더 높은 프로세스가 없다면
+                result += 1
+                if now_w == location : #찾고자하는 값과 같을 경우
+                    return result
+                
+    return result+1
+            
