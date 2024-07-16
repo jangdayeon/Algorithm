@@ -1,15 +1,13 @@
-#완전 탐색으로 문제를 풀려고 함
-from itertools import product
+rtn = 0
 def solution(numbers, target):
-    answer = 0
-    a = product(['+','-'],repeat = len(numbers))
-    for aa in a:
-        result = 0
-        for i in zip(aa,numbers):
-            if i[0] == '+':
-                result += i[1]
-            else :
-                result -= i[1]
-        if result == target :
-            answer += 1
-    return answer
+    recursion(numbers,target, 0, 0)
+    return rtn
+
+def recursion(numbers, target, n_idx, cal): #리스트, 타겟, 현재 인덱스, 지금까지 계산한 값
+    global rtn
+    if n_idx == len(numbers) :
+        if target == cal :
+            rtn += 1
+        return
+    recursion(numbers, target, n_idx + 1, cal + numbers[n_idx])
+    recursion(numbers, target, n_idx + 1, cal - numbers[n_idx])   
