@@ -15,10 +15,6 @@ class Solution {
 
         long total = s1 + s2;
 
-        if (total % 2 != 0) return -1; // 두 큐의 합이 홀수라면 균형 불가능
-
-        long target = total / 2;
-
         while (s1 != s2) {
             if (answer > (queue1.length + queue2.length) * 3) return -1;
 
